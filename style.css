@@ -1,0 +1,88 @@
+body {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    margin: 0;
+}
+
+#mainBody {
+    background-image: linear-gradient(to right top, #f3b7b7, #f9b4be, #fdb2c7, #ffb1d3, #fdb1e0, #fcb3e6, #fab5eb, #f8b7f1, #f9baf0, #f9bdee, #fac1ed, #fac4ec);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+label {
+    font-size: 15px;
+    margin: 10px;
+    font-family: Helvetica;
+}
+
+input {
+    border-radius: 7px;
+    margin-bottom: 10px;
+}
+
+#insideBody {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#inputPassLength{
+text-align: center;
+}
+
+#GenerateButton{
+    font-family: Helvetica;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#GenerateButton:hover{
+    background-color: #FBD5F1;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        height: 100vh;
+    }
+    #mainBody {
+        padding: 15px;
+        border-radius: 5px;
+    }
+    label {
+        font-size: 12px;
+        margin: 5px;
+    }
+    input {
+        margin-bottom: 5px;
+    }
+    #insideBody {
+        max-width: 300px;
+    }
+    #GenerateButton {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    body {
+        height: 100vh;
+    }
+    #mainBody {
+        padding: 25px;
+        border-radius: 10px;
+    }
+    label {
+        font-size: 18px;
+        margin: 15px;
+    }
+    input {
+        margin-bottom: 15px;
+    }
+    #insideBody {
+        max-width: 500px;
+    }
+    #GenerateButton {
+        font-size: 18px;
+    }
+}
