@@ -1,56 +1,42 @@
 function toggleUsernameInput() {
-    const inputUsername = document.getElementById("inputUsername");
-    const labelUsername = document.getElementById("labelInputUsername");
-    inputUsername.style.display = document.getElementById("CheckUsername").checked ? "block" : "none";
-    labelUsername.style.display = document.getElementById("CheckUsername").checked ? "block" : "none";
+    const usernameGroup = document.getElementById("usernameGroup");
+    usernameGroup.classList.toggle("hidden", !document.getElementById("includeUsername").checked);
 }
 
-function Generate() {
-    const includeUsername = document.getElementById("CheckUsername").checked;
-    const inputUsername = document.getElementById("inputUsername").value;
-    const includeUppercase = document.getElementById("CheckUpCase").checked;
-    const includeLowercase = document.getElementById("CheckLowCase").checked;
-    const includeNumber = document.getElementById("CheckNumber").checked;
-    const includeSymbol = document.getElementById("Checksymbol").checked;
-    const passLength = parseInt(document.getElementById("inputPassLength").value);
+function generateCredentials() {
+    const includeUsername = document.getElementById("includeUsername").checked;
+    const usernameInput = document.getElementById("usernameInput").value.trim();
+    const includeUppercase = document.getElementById("includeUppercase").checked;
+    const includeLowercase = document.getElementById("includeLowercase").checked;
+    const includeNumbers = document.getElementById("includeNumbers").checked;
+    const includeSymbols = document.getElementById("includeSymbols").checked;
+    const passwordLength = parseInt(document.getElementById("passwordLength").value, 10);
 
-    const Uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const Lowercase = "abcdefghijklmnopqrstuvwxyz";
-    const StringNumber = "0123456789";
-    const StringSymbol = "!@#$%^&*()-_=+[]{}:;<>?";
-
-    let characters = "";
-    if (includeUppercase) characters += Uppercase;
-    if (includeLowercase) characters += Lowercase;
-    if (includeNumber) characters += StringNumber;
-    if (includeSymbol) characters += StringSymbol;
-
-    let password = "";
-    for (let i = 0; i < passLength; i++) {
-        password += characters.charAt(Math.floor(Math.random() * characters.length));
+    if (!includeUppercase && !includeLowercase && !includeNumbers && !includeSymbols) {
+        alert("Please select at least one option for the password!");
+        return;
     }
 
-    let username = "";
+    const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lower = "abcdefghijklmnopqrstuvwxyz";
+    const numbers = "0123456789";
+    const symbols = "!@#$%^&*()_+-=[]{}|;:',.<>?";
+    let charPool = "";
+
+    if (includeUppercase) charPool += upper;
+    if (includeLowercase) charPool += lower;
+    if (includeNumbers) charPool += numbers;
+    if (includeSymbols) charPool += symbols;
+
+    let password = Array.from({ length: passwordLength }, () =>
+        charPool[Math.floor(Math.random() * charPool.length)]
+    ).join("");
+
+    let username = "N/A";
     if (includeUsername) {
-        username = inputUsername;
-        if (username.length < 15) {
-            const remainingLength = 15 - username.length;
-            const randomString = Array.from({ length: remainingLength }, () => {
-                const randomChar = Math.floor(Math.random() * 3);
-                if (randomChar === 0) {
-                    return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-                } else if (randomChar === 1) {
-                    return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-                } else {
-                    return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-                }
-            }).join('');
-            username += randomString.substring(0, remainingLength);
-        } else {
-            username = username.substring(0, 15);
-        }
+        username = usernameInput || `User${Math.floor(Math.random() * 1000)}`;
     }
 
-    document.getElementById("UsernameResult").innerText = username;
-    document.getElementById("PasswordResult").innerText = password;
+    document.getElementById("usernameResult").textContent = username;
+    document.getElementById("passwordResult").textContent = password;
 }
