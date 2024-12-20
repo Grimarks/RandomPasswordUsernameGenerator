@@ -1,88 +1,70 @@
 body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
     display: flex;
     justify-content: center;
-    height: auto;
-    margin: 0;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
 }
 
-#mainBody {
-    background-image: linear-gradient(to right top, #f3b7b7, #f9b4be, #fdb2c7, #ffb1d3, #fdb1e0, #fcb3e6, #fab5eb, #f8b7f1, #f9baf0, #f9bdee, #fac1ed, #fac4ec);
-    border-radius: 8px;
+.container {
+    background: #1e1e2f;
     padding: 20px;
-}
-
-label {
-    font-size: 15px;
-    margin: 10px;
-    font-family: Helvetica;
-}
-
-input {
-    border-radius: 7px;
-    margin-bottom: 10px;
-}
-
-#insideBody {
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-#inputPassLength{
-text-align: center;
-}
-
-#GenerateButton{
-    font-family: Helvetica;
-    border-radius: 5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
+    width: 90%;
+    max-width: 500px;
 }
 
-#GenerateButton:hover{
-    background-color: #FBD5F1;
+h1 {
+    margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 600px) {
-    body {
-        height: 100vh;
-    }
-    #mainBody {
+.form-group {
+    margin: 10px 0;
+    text-align: left;
+}
+
+.hidden {
+    display: none;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #2575fc;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #6a11cb;
+}
+
+.results {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .container {
         padding: 15px;
-        border-radius: 5px;
-    }
-    label {
-        font-size: 12px;
-        margin: 5px;
-    }
-    input {
-        margin-bottom: 5px;
-    }
-    #insideBody {
-        max-width: 300px;
-    }
-    #GenerateButton {
-        font-size: 12px;
-    }
-}
-
-@media only screen and (min-width: 601px) and (max-width: 900px) {
-    body {
-        height: 100vh;
-    }
-    #mainBody {
-        padding: 25px;
-        border-radius: 10px;
-    }
-    label {
-        font-size: 18px;
-        margin: 15px;
-    }
-    input {
-        margin-bottom: 15px;
-    }
-    #insideBody {
-        max-width: 500px;
-    }
-    #GenerateButton {
-        font-size: 18px;
     }
 }
